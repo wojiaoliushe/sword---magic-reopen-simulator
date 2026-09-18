@@ -1,7 +1,6 @@
 import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA } from '../render';
 
 const FONT_STACK = 'PingFang SC, Hiragino Sans GB, Heiti SC, sans-serif';
-const TOTAL_POINTS = 30;
 const COLORS = {
   bg: '#171412',
   title: '#eddcb8',
@@ -44,9 +43,13 @@ function touchPoint(touch) {
 }
 
 export default class PrepareView {
-  constructor({ attrs, onConfirm }) {
+  constructor({ attrs, onConfirm, onBack, totalPoints }) {
     this.attrDefs = Array.isArray(attrs) ? attrs : [];
     this.onConfirm = onConfirm;
+    this.onBack = onBack;
+    this.totalPoints = Number.isFinite(Number(totalPoints))
+      ? Math.max(0, Math.trunc(Number(totalPoints)))
+      : 30;
     this.points = {};
     this._resetPoints();
     this.active = false;
@@ -106,7 +109,7 @@ export default class PrepareView {
   }
 
   _remaining() {
-    return TOTAL_POINTS - this._spent();
+    return this.totalPoints - this._spent();
   }
 
   _onResize() {
@@ -139,8 +142,9 @@ export default class PrepareView {
     const innerW = w - padX * 2;
     const randomH = 40;
     const reincarnateH = 52;
-    const headerBottom = padTop + randomH + 16;
-    const listBottom = h - padBottom - reincarnateH - 16;
+    const backH = 40;
+    const headerBottom = padTop + backH + 16;
+    const listBottom = h - padBottom - reincarnateH - 12 - randomH - 16;
     const listH = Math.max(120, listBottom - headerBottom);
     const n = Math.max(1, this.attrDefs.length);
     const gap = 10;
@@ -167,7 +171,14 @@ export default class PrepareView {
     this.layout = { padX, padTop, innerW, headerBottom };
     this.rows = rows;
     this.buttons = {
-      random: { x: padX, y: padTop, w: 88, h: randomH, id: 'random' },
+      back: { x: padX, y: padTop, w: 88, h: backH, id: 'back' },
+      random: {
+        x: padX,
+        y: h - padBottom - reincarnateH - 12 - randomH,
+        w: innerW,
+        h: randomH,
+        id: 'random',
+      },
       reincarnate: {
         x: padX,
         y: h - padBottom - reincarnateH,
@@ -185,7 +196,7 @@ export default class PrepareView {
       this.render();
       return;
     }
-    for (let i = 0; i < TOTAL_POINTS; i += 1) {
+    for (let i = 0; i < this.totalPoints; i += 1) {
       const key = keys[Math.floor(Math.random() * keys.length)];
       this.points[key] += 1;
     }
@@ -211,7 +222,7 @@ export default class PrepareView {
     ctx.fillStyle = COLORS.bg;
     ctx.fillRect(0, 0, this.width, this.height);
 
-    this._drawButton(this.buttons.random, '随机', false);
+    this._drawButton(this.buttons.back, '返回', false);
     const remain = this._remaining();
     ctx.font = `16px ${FONT_STACK}`;
     ctx.fillStyle = COLORS.subtitle;
@@ -220,7 +231,7 @@ export default class PrepareView {
     ctx.fillText(
       `剩余 ${remain}`,
       this.layout.padX + this.layout.innerW,
-      this.buttons.random.y + this.buttons.random.h / 2,
+      this.buttons.back.y + this.buttons.back.h / 2,
     );
 
     for (const row of this.rows) {
@@ -240,6 +251,7 @@ export default class PrepareView {
       ctx.fillText(String(value), this.width / 2, row.y + row.h / 2 + 13);
     }
 
+    this._drawButton(this.buttons.random, '随机', false);
     this._drawButton(this.buttons.reincarnate, '轮回', false);
   }
 
@@ -322,6 +334,12 @@ export default class PrepareView {
   }
 
   _handleTap(x, y) {
+    if (this.buttons.back && hitRect(this.buttons.back, x, y)) {
+      if (typeof this.onBack === 'function') {
+        this.onBack();
+      }
+      return;
+    }
     if (hitRect(this.buttons.random, x, y)) {
       this._randomize();
       return;

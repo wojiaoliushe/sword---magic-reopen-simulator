@@ -16,6 +16,8 @@ from fantasy_achievements import apply_achievements  # noqa: E402
 from fantasy_heritage import apply_heritage  # noqa: E402
 from fantasy_frailty import apply_frailty  # noqa: E402
 from fantasy_gate_voice import apply_gate_voice  # noqa: E402
+from fantasy_talent_events import apply_talent_events  # noqa: E402
+from fantasy_alignment import apply_alignment  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 CORE = Path(__file__).resolve().parent / "fantasy_core.json"
@@ -2313,7 +2315,9 @@ def bias_primary_rewards(rows: list[dict]) -> None:
 rebalance_attrs(events)
 bias_primary_rewards(events)
 apply_gate_voice(events)
+apply_talent_events(events, add)
 reweight_story(events)
+apply_alignment(events, add)
 
 # -----------------------------------------------------------------------------
 assert len(events) >= 500, len(events)

@@ -1,4 +1,13 @@
 import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA } from '../render';
+import {
+  ALIGN_CELLS,
+  ALIGN_COL_HEADERS,
+  ALIGN_ROW_HEADERS,
+  alignmentTitle,
+  axisBand,
+  axisToPos,
+  cellIndex,
+} from '../life/alignment';
 
 const FONT_STACK = 'PingFang SC, Hiragino Sans GB, Heiti SC, sans-serif';
 const COLORS = {
@@ -7,6 +16,14 @@ const COLORS = {
   subtitle: '#9e8f7a',
   label: '#f2e6c7',
   row: '#241f1c',
+  gridLine: '#5a4e44',
+  gridFill: '#1c1917',
+  gridFillOn: '#322b26',
+  cellText: '#8c8070',
+  cellTextOn: '#eddcb8',
+  header: '#c4b49a',
+  dot: '#e8943a',
+  dotStroke: '#2a1a08',
   button: '#3a322c',
   buttonText: '#f2e6c7',
   buttonBorder: '#5a4e44',
@@ -65,9 +82,12 @@ function touchPoint(touch) {
 }
 
 export default class SettleView {
-  constructor({ attrs, peaks, onRestart }) {
+  constructor({ attrs, peaks, alignment, onRestart }) {
     this.attrDefs = Array.isArray(attrs) ? attrs : [];
     this.peaks = peaks && typeof peaks === 'object' ? peaks : {};
+    this.alignment = alignment && typeof alignment === 'object'
+      ? alignment
+      : { order: 0, moral: 0 };
     this.onRestart = onRestart;
     this.active = false;
     this.width = SCREEN_WIDTH;
@@ -76,6 +96,7 @@ export default class SettleView {
     this.safeArea = SAFE_AREA;
     this.buttons = {};
     this.rows = [];
+    this.grid = null;
     this.touch = null;
     this._onTouchStart = this._onTouchStart.bind(this);
     this._onTouchMove = this._onTouchMove.bind(this);
@@ -133,48 +154,81 @@ export default class SettleView {
     return this.peaks[key] | 0;
   }
 
+  _order() {
+    return this.alignment.order | 0;
+  }
+
+  _moral() {
+    return this.alignment.moral | 0;
+  }
+
   _layout() {
     const w = this.width;
     const h = this.height;
     const safe = this.safeArea;
-    const padX = 28;
+    const padX = 24;
     const padTop = Math.max(20, (safe.top || 0) + 12);
     const padBottom = Math.max(20, h - (safe.bottom || h) + 16);
     const innerW = w - padX * 2;
     const restartH = 52;
-    const titleH = 36;
-    const subtitleH = 22;
-    const headerBottom = padTop + titleH + 8 + subtitleH + 18;
-    const listBottom = h - padBottom - restartH - 16;
-    const listH = Math.max(120, listBottom - headerBottom);
-    const n = Math.max(1, this.attrDefs.length);
-    const gap = 10;
-    const rowH = Math.min(64, Math.max(48, (listH - gap * (n - 1)) / n));
-    const badgeW = 88;
-    const badgeH = Math.min(36, rowH - 12);
+    const titleH = 32;
+    const subtitleH = 20;
+    const headerBottom = padTop + titleH + 6 + subtitleH + 12;
+    const conclusionH = 36;
+    const valueH = 20;
+    const gridGap = 10;
+    const restartY = h - padBottom - restartH;
+    const n = this.attrDefs.length;
+    const colGap = 10;
+    const rowGap = 8;
+    const peakH = 36;
+    const peakRows = Math.ceil(Math.max(1, n) / 2);
+    const peaksH = n > 0 ? peakRows * peakH + Math.max(0, peakRows - 1) * rowGap : 0;
+    const peaksBottom = headerBottom + peaksH;
+    const gridTop = peaksBottom + (n > 0 ? 14 : 0);
+    const gridBudget = Math.max(160, restartY - 16 - conclusionH - valueH - gridGap - gridTop);
+    const rowLabelW = 36;
+    const colHeaderH = 28;
+    const plotMax = Math.min(innerW - rowLabelW, Math.max(0, gridBudget - colHeaderH));
+    const plotSize = Math.max(96, plotMax);
+    const colW = (innerW - colGap) / 2;
     const rows = [];
-    let y = headerBottom;
-    for (const def of this.attrDefs) {
+    for (let i = 0; i < this.attrDefs.length; i += 1) {
+      const def = this.attrDefs[i];
+      const col = i % 2;
+      const row = Math.floor(i / 2);
       rows.push({
         key: def.key,
         label: def.label,
-        y,
-        h: rowH,
-        badge: {
-          x: padX + innerW - 14 - badgeW,
-          y: y + (rowH - badgeH) / 2,
-          w: badgeW,
-          h: badgeH,
-        },
+        x: padX + col * (colW + colGap),
+        y: headerBottom + row * (peakH + rowGap),
+        w: colW,
+        h: peakH,
       });
-      y += rowH + gap;
     }
-    this.layout = { padX, padTop, innerW, titleY: padTop, subtitleY: padTop + titleH + 8 };
+    this.layout = {
+      padX,
+      padTop,
+      innerW,
+      titleY: padTop,
+      subtitleY: padTop + titleH + 6,
+      conclusionY: gridTop + colHeaderH + plotSize + gridGap,
+      valueY: gridTop + colHeaderH + plotSize + gridGap + conclusionH,
+    };
     this.rows = rows;
+    this.grid = {
+      x: padX + rowLabelW,
+      y: gridTop + colHeaderH,
+      size: plotSize,
+      rowLabelX: padX,
+      colHeaderY: gridTop,
+      rowLabelW,
+      colHeaderH,
+    };
     this.buttons = {
       restart: {
         x: padX,
-        y: h - padBottom - restartH,
+        y: restartY,
         w: innerW,
         h: restartH,
         id: 'restart',
@@ -197,32 +251,112 @@ export default class SettleView {
     ctx.fillText('结算', L.padX, L.titleY);
     ctx.fillStyle = COLORS.subtitle;
     ctx.font = `14px ${FONT_STACK}`;
-    ctx.fillText('本世各属性达到过的最高值', L.padX, L.subtitleY);
+    ctx.fillText('本世峰值，以及落点阵营', L.padX, L.subtitleY);
 
     for (const row of this.rows) {
       ctx.fillStyle = COLORS.row;
-      roundRectPath(ctx, L.padX, row.y, L.innerW, row.h, 10);
+      roundRectPath(ctx, row.x, row.y, row.w, row.h, 8);
       ctx.fill();
       ctx.textAlign = 'left';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = COLORS.label;
-      ctx.font = `17px ${FONT_STACK}`;
-      ctx.fillText(row.label, L.padX + 18, row.y + row.h / 2);
+      ctx.font = `15px ${FONT_STACK}`;
+      ctx.fillText(row.label, row.x + 10, row.y + row.h / 2);
 
       const value = this._peakOf(row.key);
       const tier = peakTier(value);
-      const badge = row.badge;
+      const badgeW = 44;
+      const badgeH = 24;
+      const bx = row.x + row.w - 8 - badgeW;
+      const by = row.y + (row.h - badgeH) / 2;
       ctx.fillStyle = tier.fill;
-      roundRectPath(ctx, badge.x, badge.y, badge.w, badge.h, 8);
+      roundRectPath(ctx, bx, by, badgeW, badgeH, 6);
       ctx.fill();
       ctx.fillStyle = tier.text;
-      ctx.font = `bold 20px ${FONT_STACK}`;
+      ctx.font = `bold 15px ${FONT_STACK}`;
       ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(String(value), badge.x + badge.w / 2, badge.y + badge.h / 2);
+      ctx.fillText(String(value), bx + badgeW / 2, by + badgeH / 2);
     }
 
+    this._drawAlignmentGrid();
+
+    const title = alignmentTitle(this._order(), this._moral());
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillStyle = COLORS.title;
+    ctx.font = `bold 26px ${FONT_STACK}`;
+    ctx.fillText(title, this.width / 2, L.conclusionY);
+    ctx.fillStyle = COLORS.subtitle;
+    ctx.font = `13px ${FONT_STACK}`;
+    ctx.fillText(`序乱 ${this._order()}  ·  善恶 ${this._moral()}`, this.width / 2, L.valueY);
+
     this._drawButton(this.buttons.restart, '重开');
+  }
+
+  _drawAlignmentGrid() {
+    const grid = this.grid;
+    if (!grid) {
+      return;
+    }
+    const order = this._order();
+    const moral = this._moral();
+    const colOn = cellIndex(axisBand(order));
+    const rowOn = cellIndex(axisBand(moral));
+    const cell = grid.size / 3;
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = COLORS.header;
+    ctx.font = `13px ${FONT_STACK}`;
+    for (let c = 0; c < 3; c += 1) {
+      ctx.fillText(
+        ALIGN_COL_HEADERS[c],
+        grid.x + cell * c + cell / 2,
+        grid.colHeaderY + grid.colHeaderH / 2,
+      );
+    }
+    ctx.font = `13px ${FONT_STACK}`;
+    for (let r = 0; r < 3; r += 1) {
+      ctx.fillText(
+        ALIGN_ROW_HEADERS[r],
+        grid.rowLabelX + grid.rowLabelW / 2,
+        grid.y + cell * r + cell / 2,
+      );
+    }
+
+    for (let r = 0; r < 3; r += 1) {
+      for (let c = 0; c < 3; c += 1) {
+        const x = grid.x + cell * c;
+        const y = grid.y + cell * r;
+        const on = c === colOn && r === rowOn;
+        ctx.fillStyle = on ? COLORS.gridFillOn : COLORS.gridFill;
+        ctx.fillRect(x, y, cell, cell);
+        ctx.strokeStyle = COLORS.gridLine;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(x + 0.5, y + 0.5, cell - 1, cell - 1);
+        ctx.fillStyle = on ? COLORS.cellTextOn : COLORS.cellText;
+        ctx.font = `12px ${FONT_STACK}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(ALIGN_CELLS[r][c], x + cell / 2, y + cell / 2);
+      }
+    }
+
+    ctx.strokeStyle = COLORS.gridLine;
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(grid.x + 0.5, grid.y + 0.5, grid.size - 1, grid.size - 1);
+
+    const radius = Math.max(5, Math.min(8, cell * 0.12));
+    const inner = Math.max(0, grid.size - radius * 2);
+    const dx = grid.x + radius + axisToPos(order, inner);
+    const dy = grid.y + radius + axisToPos(moral, inner);
+    ctx.beginPath();
+    ctx.arc(dx, dy, radius, 0, Math.PI * 2);
+    ctx.fillStyle = COLORS.dot;
+    ctx.fill();
+    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = COLORS.dotStroke;
+    ctx.stroke();
   }
 
   _drawButton(btn, label) {

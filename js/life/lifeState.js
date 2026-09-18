@@ -27,6 +27,9 @@ export default class LifeState {
     this.yearFired = {};
     this.yearLog = [];
     this.yearDelay0 = {};
+    this.talents = [];
+    this.talentFired = {};
+    this.talentMods = [];
   }
 
   clearYear() {

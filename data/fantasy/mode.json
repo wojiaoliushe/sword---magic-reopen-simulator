@@ -14,6 +14,8 @@
     { "key": "wis", "label": "感知", "short": "感", "initial": 5, "min": 0 },
     { "key": "con", "label": "体质", "short": "体", "initial": 5, "min": 0 },
     { "key": "cha", "label": "魅力", "short": "魅", "initial": 5, "min": 0 },
-    { "key": "gold", "label": "金币", "short": "金", "initial": 0, "min": 0 }
+    { "key": "gold", "label": "金币", "short": "金", "initial": 0, "min": 0 },
+    { "key": "order", "label": "序乱", "short": "序", "initial": 0, "alloc": false },
+    { "key": "moral", "label": "善恶", "short": "善", "initial": 0, "alloc": false }
   ]
 }

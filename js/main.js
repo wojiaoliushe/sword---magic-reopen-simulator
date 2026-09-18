@@ -3,11 +3,13 @@ import { ctx } from './render';
 import LifeEngine from './life/lifeEngine';
 import ModeDef, { resolveModeEntry } from './life/modeDef';
 import StartView from './ui/startView';
+import TalentView from './ui/talentView';
 import PrepareView from './ui/prepareView';
 import YearView from './ui/yearView';
 import SettleView from './ui/settleView';
 import AchieveView from './ui/achieveView';
 import { loadCatalog } from './achieve/index';
+import { BASE_POINTS, extraPoints, loadTalents, drawTalents, resolvePicks } from './talent/index';
 
 function parseJson(data) {
   const text = typeof data === 'string' ? data : data.toString();
@@ -46,6 +48,16 @@ function packPaths(base, filename) {
   return [rel, `/${rel}`];
 }
 
+function asEventList(raw) {
+  if (Array.isArray(raw)) {
+    return raw.slice();
+  }
+  if (raw && Array.isArray(raw.events)) {
+    return raw.events.slice();
+  }
+  return [];
+}
+
 function loadDefaultPack() {
   return readJson(['data/modes.json', '/data/modes.json'], '无法读取 data/modes.json')
     .then((index) => {
@@ -58,12 +70,19 @@ function loadDefaultPack() {
         readJson(packPaths(base, 'mode.json'), `无法读取 ${base}/mode.json`),
         readJson(packPaths(base, 'events.json'), `无法读取 ${base}/events.json`),
         readJson(packPaths(base, 'achievements.json'), `无法读取 ${base}/achievements.json`),
-      ]).then(([modeRaw, events, achievements]) => {
+        readJson(packPaths(base, 'talents.json'), `无法读取 ${base}/talents.json`).catch(() => ({ talents: [] })),
+        readJson(packPaths(base, 'talent_events.json'), `无法读取 ${base}/talent_events.json`).catch(() => ({ events: [] })),
+      ]).then(([modeRaw, events, achievements, talents, talentEvents]) => {
         const parsed = ModeDef.parse(modeRaw);
         if (parsed.error) {
           throw new Error(parsed.error);
         }
-        return { mode: parsed.mode, events, achievements };
+        return {
+          mode: parsed.mode,
+          events: asEventList(events).concat(asEventList(talentEvents)),
+          achievements,
+          talents,
+        };
       });
     });
 }
@@ -85,14 +104,19 @@ export default class Main {
   constructor() {
     this.engine = null;
     this.startView = null;
+    this.talentView = null;
     this.prepView = null;
     this.view = null;
     this.settleView = null;
     this.achieveView = null;
+    this.talentDrawn = [];
+    this.talentSelected = [];
+    this.talentResolved = [];
     drawBootMessage('正在加载…');
     loadDefaultPack()
-      .then(({ mode, events, achievements }) => {
+      .then(({ mode, events, achievements, talents }) => {
         loadCatalog(achievements);
+        loadTalents(talents);
         this.engine = new LifeEngine(mode);
         const err = this.engine.loadEvents(events);
         if (err) {
@@ -111,6 +135,10 @@ export default class Main {
     if (this.startView) {
       this.startView.stop();
       this.startView = null;
+    }
+    if (this.talentView) {
+      this.talentView.stop();
+      this.talentView = null;
     }
     if (this.prepView) {
       this.prepView.stop();
@@ -137,26 +165,51 @@ export default class Main {
     this.startView = new StartView({
       title,
       subtitle,
-      onStart: () => this._showPrep(),
+      onStart: () => this._showTalent(true),
       onAchieve: () => this._showAchieve(),
     });
     this.startView.start();
   }
 
+  _showTalent(fresh) {
+    if (fresh) {
+      this.talentDrawn = drawTalents();
+      this.talentSelected = [];
+      this.talentResolved = [];
+    }
+    this._stopViews();
+    this.talentView = new TalentView({
+      drawn: this.talentDrawn,
+      selected: this.talentSelected,
+      onBack: () => this._showStart(),
+      onNext: (ids) => {
+        this.talentSelected = Array.isArray(ids) ? ids : [];
+        this.talentResolved = resolvePicks(this.talentSelected);
+        this._showPrep();
+      },
+    });
+    this.talentView.start();
+  }
+
   _showPrep() {
-    const attrs = this.engine && this.engine.mode ? this.engine.mode.attrs : [];
+    const all = this.engine && this.engine.mode ? this.engine.mode.attrs : [];
+    const attrs = all.filter((def) => def && def.alloc !== false);
+    const total = Math.max(0, BASE_POINTS + extraPoints(this.talentResolved));
     this._stopViews();
     this.prepView = new PrepareView({
       attrs,
-      onConfirm: (alloc) => this._enterGame('', alloc),
+      totalPoints: total,
+      onBack: () => this._showTalent(false),
+      onConfirm: (alloc) => this._enterGame('', alloc, this.talentResolved),
     });
     this.prepView.start();
   }
 
-  _enterGame(errorText = '', attrs = null) {
+  _enterGame(errorText = '', attrs = null, talents = null) {
     this._stopViews();
     this.view = new YearView(this.engine, errorText, {
       attrs,
+      talents: Array.isArray(talents) ? talents : [],
       onRestart: () => this._showStart(),
       onSettle: () => this._showSettle(),
     });
@@ -168,19 +221,28 @@ export default class Main {
     const attrDefs = mode && Array.isArray(mode.attrs) ? mode.attrs : [];
     const peaks = {};
     const recorded = this.engine && this.engine.state ? this.engine.state.attrPeak : null;
+    const nowAttrs = this.engine && this.engine.state ? this.engine.state.attrs : null;
     for (const def of attrDefs) {
+      if (def.alloc === false) {
+        continue;
+      }
       const fromPeak = recorded && Object.prototype.hasOwnProperty.call(recorded, def.key)
         ? recorded[def.key]
         : 0;
-      const fromNow = this.engine && this.engine.state && this.engine.state.attrs
-        ? this.engine.state.attrs[def.key]
+      const fromNow = nowAttrs && Object.prototype.hasOwnProperty.call(nowAttrs, def.key)
+        ? nowAttrs[def.key]
         : 0;
       peaks[def.key] = Math.max(fromPeak | 0, fromNow | 0);
     }
+    const alignment = {
+      order: nowAttrs && nowAttrs.order !== undefined ? nowAttrs.order | 0 : 0,
+      moral: nowAttrs && nowAttrs.moral !== undefined ? nowAttrs.moral | 0 : 0,
+    };
     this._stopViews();
     this.settleView = new SettleView({
-      attrs: attrDefs,
+      attrs: attrDefs.filter((def) => def && def.alloc !== false),
       peaks,
+      alignment,
       onRestart: () => this._showStart(),
     });
     this.settleView.start();

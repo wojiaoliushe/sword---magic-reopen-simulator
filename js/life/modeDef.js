@@ -36,8 +36,11 @@ export default class ModeDef {
 
   attrMin(key) {
     const def = this.attrByKey[key];
-    if (!def || def.min === undefined || def.min === null) {
+    if (!def) {
       return 0;
+    }
+    if (def.min === undefined || def.min === null) {
+      return null;
     }
     return def.min;
   }
@@ -91,12 +94,20 @@ export default class ModeDef {
       const short = raw.short === undefined || raw.short === null || String(raw.short) === ''
         ? label.slice(0, 1)
         : String(raw.short);
+      const alloc = raw.alloc !== false;
+      let min;
+      if (raw.min === undefined || raw.min === null) {
+        min = alloc ? 0 : null;
+      } else {
+        min = toInt(raw.min, 0);
+      }
       const def = {
         key,
         label,
         short,
         initial: raw.initial === undefined || raw.initial === null ? 5 : toInt(raw.initial, 5),
-        min: raw.min === undefined || raw.min === null ? 0 : toInt(raw.min, 0),
+        min,
+        alloc,
       };
       mode.attrs.push(def);
       mode.attrKeys.push(key);

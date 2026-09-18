@@ -75,6 +75,7 @@ export default class YearView {
     this.engine = engine;
     this.errorText = errorText;
     this.startAttrs = options.attrs || null;
+    this.startTalents = Array.isArray(options.talents) ? options.talents : [];
     this.onRestart = options.onRestart || null;
     this.onSettle = options.onSettle || null;
     this.active = false;
@@ -160,7 +161,7 @@ export default class YearView {
     const padBottom = Math.max(20, h - (safe.bottom || h) + 14);
     const titleH = 32;
     const subtitleH = 20;
-    const statsH = 72;
+    const statsH = 96;
     const hintH = 40;
     const buttonH = 44;
     const logTop = padTop + titleH + 8 + subtitleH + 12 + statsH + 12;
@@ -207,7 +208,7 @@ export default class YearView {
   _beginLife() {
     this._stopAutoplay(true);
     this.journal = [];
-    this.engine.restart(this.startAttrs);
+    this.engine.restart(this.startAttrs, this.startTalents);
     this._appendYearToJournal();
     this.stickBottom = true;
     this._refresh();

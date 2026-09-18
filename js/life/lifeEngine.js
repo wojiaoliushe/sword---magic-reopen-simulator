@@ -1,6 +1,8 @@
 import EventDef from './eventDef';
 import LifeState from './lifeState';
 import { unlock, unlockByEvent } from '../achieve/index';
+import { collectEventMods, getTalent, rndAttrKeys } from '../talent/index';
+import { ALIGN_MORAL_KEY, ALIGN_ORDER_KEY, alignmentWeightMul } from './alignment';
 
 function toInt(value, fallback = 0) {
   const n = Number(value);
@@ -80,15 +82,20 @@ export default class LifeEngine {
     return '';
   }
 
-  restart(attrOverrides) {
+  restart(attrOverrides, talentIds) {
     this.state = new LifeState(this.mode);
     if (isPlainObject(attrOverrides) && this.mode && Array.isArray(this.mode.attrs)) {
       for (const def of this.mode.attrs) {
+        if (def.alloc === false) {
+          continue;
+        }
         if (Object.prototype.hasOwnProperty.call(attrOverrides, def.key)) {
           this.state.attrs[def.key] = toInt(attrOverrides[def.key], 0);
         }
       }
     }
+    this._bindTalents(talentIds);
+    this._applyAllTalentFlags();
     this._syncAttrPeaks();
     this._initUnlocked();
     this._lifeLog('[LIFE] ---- 重开 ----');
@@ -106,6 +113,7 @@ export default class LifeEngine {
   settleCurrentYear() {
     const state = this.state;
     state.clearYear();
+    this._fireReadyTalents();
     const unlockedDue = this._redeemDueUnlocks();
     this._redeemDueFlags();
     this._collectInevitableQueue();
@@ -365,6 +373,9 @@ export default class LifeEngine {
     if (!this._requiredFlagsOk(event.requiredFlags)) {
       return 'flag';
     }
+    if (this._talentBlocked(event)) {
+      return 'talent';
+    }
     if (toInt(state.triggerCount[event.eventId], 0) >= event.maxTriggers) {
       return 'count';
     }
@@ -614,11 +625,168 @@ export default class LifeEngine {
     return this.mode && this.mode.attrKeys ? this.mode.attrKeys : [];
   }
 
+  _bindTalents(talentIds) {
+    const src = Array.isArray(talentIds) ? talentIds : [];
+    const ids = [];
+    const seen = {};
+    for (let i = 0; i < src.length; i += 1) {
+      const id = String(src[i] || '').trim();
+      if (!id || seen[id] || !getTalent(id)) {
+        continue;
+      }
+      seen[id] = true;
+      ids.push(id);
+    }
+    this.state.talents = ids;
+    this.state.talentFired = {};
+    this.state.talentMods = collectEventMods(ids);
+  }
+
+  _applyAllTalentFlags() {
+    const ids = this.state.talents || [];
+    for (let i = 0; i < ids.length; i += 1) {
+      const def = getTalent(ids[i]);
+      if (def && def.flags) {
+        this._applyFlags(def.flags);
+      }
+    }
+  }
+
+  _fireReadyTalents() {
+    const ids = this.state.talents || [];
+    for (let pass = 0; pass < 4; pass += 1) {
+      let fired = false;
+      for (let i = 0; i < ids.length; i += 1) {
+        const id = ids[i];
+        if (this.state.talentFired[id]) {
+          continue;
+        }
+        const def = getTalent(id);
+        if (!def) {
+          this.state.talentFired[id] = true;
+          continue;
+        }
+        if (this.state.age < def.minAge) {
+          continue;
+        }
+        if (!this._requiredAttrsOk(def.requiredAttrs)) {
+          continue;
+        }
+        const effects = this._talentEffectPatch(def);
+        this._applyEffects(effects);
+        this._applyFlags(def.flags);
+        this.state.talentFired[id] = true;
+        fired = true;
+        this.state.yearLog.push({
+          event_id: 0,
+          desc: `天赋「${def.title}」发动。`,
+          effects: shallowClone(effects),
+        });
+        this._lifeLog(`[LIFE] ${this.state.age}岁 talent ${id} ${this._fmtAttrs()}`);
+      }
+      if (!fired) {
+        break;
+      }
+    }
+  }
+
+  _talentEffectPatch(def) {
+    const patch = {};
+    for (const key of this._attrKeys()) {
+      patch[key] = 0;
+    }
+    const raw = def && isPlainObject(def.effects) ? def.effects : {};
+    for (const key of this._attrKeys()) {
+      if (raw[key] !== undefined && raw[key] !== null) {
+        patch[key] = toInt(raw[key], 0);
+      }
+    }
+    const rnd = toInt(raw.rnd, 0);
+    if (rnd !== 0) {
+      const keys = rndAttrKeys().filter((key) => this.mode && this.mode.isAttrKey(key));
+      if (keys.length) {
+        const pick = keys[Math.floor(Math.random() * keys.length)];
+        patch[pick] = toInt(patch[pick], 0) + rnd;
+      }
+    }
+    return patch;
+  }
+
+  _talentModHits(event, mod) {
+    if (!event || !mod) {
+      return false;
+    }
+    if (mod.group) {
+      if (event.group === mod.group) {
+        return true;
+      }
+      if (Array.isArray(event.cooldownGroups) && event.cooldownGroups.indexOf(mod.group) >= 0) {
+        return true;
+      }
+      if (Array.isArray(event.tags) && event.tags.indexOf(mod.group) >= 0) {
+        return true;
+      }
+    }
+    if (mod.tag && Array.isArray(event.tags) && event.tags.indexOf(mod.tag) >= 0) {
+      return true;
+    }
+    return false;
+  }
+
+  _talentBlocked(event) {
+    const mods = this.state.talentMods || [];
+    for (let i = 0; i < mods.length; i += 1) {
+      const mod = mods[i];
+      if (mod.op === 'block' && this._talentModHits(event, mod)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  _talentWeightMul(event) {
+    let mul = 1;
+    const mods = this.state.talentMods || [];
+    for (let i = 0; i < mods.length; i += 1) {
+      const mod = mods[i];
+      if (mod.op !== 'boost' && mod.op !== 'nerf') {
+        continue;
+      }
+      if (!this._talentModHits(event, mod)) {
+        continue;
+      }
+      const factor = Number(mod.mul);
+      if (Number.isFinite(factor) && factor >= 0) {
+        mul *= factor;
+      }
+    }
+    if (mul < 0.05) {
+      mul = 0.05;
+    }
+    if (mul > 8) {
+      mul = 8;
+    }
+    return mul;
+  }
+
+  _alignmentWeightMul(event) {
+    if (!this.mode || !this.mode.isAttrKey(ALIGN_ORDER_KEY) || !this.mode.isAttrKey(ALIGN_MORAL_KEY)) {
+      return 1;
+    }
+    const fx = event && event.effects ? event.effects : {};
+    return alignmentWeightMul(
+      toInt(this.state.attrs[ALIGN_ORDER_KEY], 0),
+      toInt(this.state.attrs[ALIGN_MORAL_KEY], 0),
+      toInt(fx[ALIGN_ORDER_KEY], 0),
+      toInt(fx[ALIGN_MORAL_KEY], 0),
+    );
+  }
+
   _applyEffects(effects) {
     for (const key of this._attrKeys()) {
       let nextVal = toInt(this.state.attrs[key], 0) + toInt(effects[key], 0);
       const minVal = this.mode ? this.mode.attrMin(key) : 0;
-      if (nextVal < minVal) {
+      if (minVal !== null && minVal !== undefined && nextVal < minVal) {
         nextVal = minVal;
       }
       this.state.attrs[key] = nextVal;
@@ -730,6 +898,8 @@ export default class LifeEngine {
       }
       weight *= factor;
     }
+    weight *= this._talentWeightMul(event);
+    weight *= this._alignmentWeightMul(event);
     if (weight < 0) {
       return 0;
     }
