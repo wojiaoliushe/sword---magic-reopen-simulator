@@ -51,6 +51,7 @@ export default class StartView {
     this.safeArea = SAFE_AREA;
     this.buttons = {};
     this.touch = null;
+    this.icon = null;
     this._onTouchStart = this._onTouchStart.bind(this);
     this._onTouchMove = this._onTouchMove.bind(this);
     this._onTouchEnd = this._onTouchEnd.bind(this);
@@ -66,8 +67,24 @@ export default class StartView {
     if (typeof wx.onWindowResize === 'function') {
       wx.onWindowResize(this._onResize);
     }
+    this._loadIcon();
     this._layout();
     this.render();
+  }
+
+  _loadIcon() {
+    if (this.icon || typeof wx.createImage !== 'function') {
+      return;
+    }
+    const img = wx.createImage();
+    img.onload = () => {
+      this.icon = img;
+      if (this.active) {
+        this.render();
+      }
+    };
+    img.onerror = () => {};
+    img.src = 'images/avatar.png';
   }
 
   stop() {
@@ -117,11 +134,15 @@ export default class StartView {
     const stackH = btnH * 2 + gap;
     const btnY = Math.min(h - padBottom - stackH, h * 0.58);
 
+    const iconSize = 96;
+    const titleY = padTop + iconSize + 28;
     this.layout = {
       padTop,
       innerW,
-      titleY: padTop + Math.max(24, h * 0.12),
-      subtitleY: padTop + Math.max(24, h * 0.12) + 48,
+      iconSize,
+      iconY: padTop,
+      titleY,
+      subtitleY: titleY + 48,
     };
     this.buttons = {
       start: { x: btnX, y: btnY, w: innerW, h: btnH, id: 'start' },
@@ -137,6 +158,23 @@ export default class StartView {
     ctx.fillRect(0, 0, this.width, this.height);
 
     const L = this.layout;
+    if (this.icon && L.iconSize) {
+      const size = L.iconSize;
+      const ix = (this.width - size) / 2;
+      const iy = L.iconY;
+      ctx.save();
+      roundRectPath(ctx, ix, iy, size, size, 20);
+      ctx.clip();
+      ctx.drawImage(this.icon, ix, iy, size, size);
+      ctx.restore();
+      ctx.save();
+      ctx.strokeStyle = COLORS.buttonBorder;
+      ctx.lineWidth = 1;
+      roundRectPath(ctx, ix, iy, size, size, 20);
+      ctx.stroke();
+      ctx.restore();
+    }
+
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.fillStyle = COLORS.title;

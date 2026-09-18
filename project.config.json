@@ -1,5 +1,5 @@
 {
-  "description": "项目配置文件",
+  "description": "异世岁记",
   "setting": {
     "urlCheck": false,
     "es6": true,
@@ -26,8 +26,8 @@
   },
   "compileType": "game",
   "libVersion": "latest",
-  "appid": "wxa4fa5ad76553caf2",
-  "projectname": "quickstart",
+  "appid": "wx3b70006571d39742",
+  "projectname": "异世岁记",
   "condition": {
     "search": {
       "current": -1,
