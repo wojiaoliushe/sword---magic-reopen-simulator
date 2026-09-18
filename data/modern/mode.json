@@ -1,0 +1,16 @@
+{
+  "id": "modern",
+  "title": "人生重开模拟器",
+  "subtitle": "单年事件结算试玩",
+  "clock": {
+    "key": "age",
+    "label": "岁",
+    "start": 0
+  },
+  "attrs": [
+    { "key": "looks", "label": "颜值", "short": "颜", "initial": 5, "min": 0 },
+    { "key": "intelligence", "label": "智力", "short": "智", "initial": 5, "min": 0 },
+    { "key": "physique", "label": "体质", "short": "体", "initial": 5, "min": 0 },
+    { "key": "family", "label": "家境", "short": "家", "initial": 5, "min": 0 }
+  ]
+}

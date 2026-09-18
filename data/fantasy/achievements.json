@@ -1,0 +1,225 @@
+{
+  "achievements": [
+    {
+      "id": "peak_str_40",
+      "title": "力可开山",
+      "desc": "力量达到 40"
+    },
+    {
+      "id": "peak_agi_40",
+      "title": "脚程惊人",
+      "desc": "敏捷达到 40"
+    },
+    {
+      "id": "peak_int_40",
+      "title": "过目能记",
+      "desc": "智力达到 40"
+    },
+    {
+      "id": "peak_wis_40",
+      "title": "听声辨位",
+      "desc": "感知达到 40"
+    },
+    {
+      "id": "peak_con_40",
+      "title": "筋骨极硬",
+      "desc": "体质达到 40"
+    },
+    {
+      "id": "peak_cha_40",
+      "title": "见者难忘",
+      "desc": "魅力达到 40"
+    },
+    {
+      "id": "peak_gold_40",
+      "title": "箱底有金",
+      "desc": "金币达到 40"
+    },
+    {
+      "id": "race_human",
+      "title": "寻常人种",
+      "desc": "以人类之身出生",
+      "unlockEvents": [1010, 1020, 1021, 1022, 1023]
+    },
+    {
+      "id": "race_elf",
+      "title": "尖耳长生",
+      "desc": "以精灵之身出生",
+      "unlockEvents": [1011, 1024, 1025, 1026, 1027]
+    },
+    {
+      "id": "race_dwarf",
+      "title": "岩下短汉",
+      "desc": "以矮人之身出生",
+      "unlockEvents": [1012, 1028, 1029, 1030, 1031]
+    },
+    {
+      "id": "race_halfling",
+      "title": "脚掌厚实",
+      "desc": "以半身人之身出生",
+      "unlockEvents": [1013, 1032, 1033, 1034, 1035]
+    },
+    {
+      "id": "race_gnome",
+      "title": "爱拆齿轮",
+      "desc": "以侏儒之身出生",
+      "unlockEvents": [1014, 1036, 1037, 1038, 1039]
+    },
+    {
+      "id": "race_half_orc",
+      "title": "兽牙混血",
+      "desc": "以半兽人之身出生",
+      "unlockEvents": [1015, 1040, 1041, 1042, 1043]
+    },
+    {
+      "id": "race_half_elf",
+      "title": "人耳微尖",
+      "desc": "以半精灵之身出生",
+      "unlockEvents": [1016, 1044, 1045, 1046, 1047]
+    },
+    {
+      "id": "race_dragonborn",
+      "title": "呼吸带热",
+      "desc": "以龙裔之身出生",
+      "unlockEvents": [1017, 1048, 1049, 1050, 1051]
+    },
+    {
+      "id": "race_tiefling",
+      "title": "小角异瞳",
+      "desc": "以提夫林之身出生",
+      "unlockEvents": [1018, 1052, 1053, 1054, 1055]
+    },
+    {
+      "id": "origin_priest",
+      "title": "香火先到",
+      "desc": "出生在牧师家庭",
+      "unlockEvents": [1101, 1111, 1112, 1113, 1114]
+    },
+    {
+      "id": "origin_soldier",
+      "title": "旧盾墙上",
+      "desc": "出生在军人家庭",
+      "unlockEvents": [1102, 1115, 1116, 1117, 1118]
+    },
+    {
+      "id": "origin_mage",
+      "title": "蜡油书堆",
+      "desc": "出生在法师家庭",
+      "unlockEvents": [1103, 1119, 1120, 1121, 1122]
+    },
+    {
+      "id": "origin_merchant",
+      "title": "铜币缝里",
+      "desc": "出生在商人家庭",
+      "unlockEvents": [1104, 1123, 1124, 1125, 1126]
+    },
+    {
+      "id": "origin_farmer",
+      "title": "麦芒刮窗",
+      "desc": "出生在农人家庭",
+      "unlockEvents": [1105, 1127, 1128, 1129, 1130]
+    },
+    {
+      "id": "origin_artisan",
+      "title": "作坊学步",
+      "desc": "出生在工匠家庭",
+      "unlockEvents": [1106, 1131, 1132, 1133, 1134]
+    },
+    {
+      "id": "origin_street",
+      "title": "巷中捡来",
+      "desc": "在街头被捡到",
+      "unlockEvents": [1107, 1135, 1136, 1137, 1138]
+    },
+    {
+      "id": "origin_noble",
+      "title": "纹章包被",
+      "desc": "出生在贵族家庭",
+      "unlockEvents": [1108, 1139, 1140, 1141, 1142]
+    },
+    {
+      "id": "origin_tribe",
+      "title": "举给祖先",
+      "desc": "出生在氏族部落",
+      "unlockEvents": [1109, 1143, 1144, 1145, 1146]
+    },
+    {
+      "id": "origin_temple_order",
+      "title": "誓词催眠",
+      "desc": "出生在骑士团院落",
+      "unlockEvents": [1110, 1147, 1148, 1149, 1150]
+    },
+    {
+      "id": "job_fighter",
+      "title": "握剑谋生",
+      "desc": "成为战士",
+      "unlockEvents": [1610]
+    },
+    {
+      "id": "job_paladin",
+      "title": "圣徽立誓",
+      "desc": "成为圣武士",
+      "unlockEvents": [1611]
+    },
+    {
+      "id": "job_cleric",
+      "title": "祈祷换力",
+      "desc": "成为牧师",
+      "unlockEvents": [1612]
+    },
+    {
+      "id": "job_wizard",
+      "title": "抱书入门",
+      "desc": "成为法师",
+      "unlockEvents": [1613]
+    },
+    {
+      "id": "job_rogue",
+      "title": "靠锁吃饭",
+      "desc": "成为盗贼",
+      "unlockEvents": [1614]
+    },
+    {
+      "id": "job_ranger",
+      "title": "弃城入野",
+      "desc": "成为游侠",
+      "unlockEvents": [1615]
+    },
+    {
+      "id": "job_barbarian",
+      "title": "怒火有名",
+      "desc": "成为野蛮人",
+      "unlockEvents": [1616]
+    },
+    {
+      "id": "job_bard",
+      "title": "琴换晚饭",
+      "desc": "成为吟游诗人",
+      "unlockEvents": [1617]
+    },
+    {
+      "id": "job_sorcerer",
+      "title": "血里生法",
+      "desc": "成为术士",
+      "unlockEvents": [1618]
+    },
+    {
+      "id": "job_druid",
+      "title": "藤蔓听话",
+      "desc": "成为德鲁伊",
+      "unlockEvents": [1619]
+    },
+    {
+      "id": "job_monk",
+      "title": "打坐挨打",
+      "desc": "成为武僧",
+      "unlockEvents": [1620]
+    },
+    {
+      "id": "job_warlock",
+      "title": "梦中签字",
+      "desc": "成为魔契师",
+      "unlockEvents": [1621]
+    }
+  ]
+}

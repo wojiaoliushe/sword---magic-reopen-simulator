@@ -1,0 +1,7 @@
+{
+  "default": "fantasy",
+  "modes": [
+    { "id": "modern", "path": "data/modern" },
+    { "id": "fantasy", "path": "data/fantasy" }
+  ]
+}

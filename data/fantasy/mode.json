@@ -1,0 +1,19 @@
+{
+  "id": "fantasy",
+  "title": "异世岁记",
+  "subtitle": "再活一遍，从摇篮到墓碑",
+  "clock": {
+    "key": "age",
+    "label": "岁",
+    "start": 0
+  },
+  "attrs": [
+    { "key": "str", "label": "力量", "short": "力", "initial": 5, "min": 0 },
+    { "key": "agi", "label": "敏捷", "short": "敏", "initial": 5, "min": 0 },
+    { "key": "int", "label": "智力", "short": "智", "initial": 5, "min": 0 },
+    { "key": "wis", "label": "感知", "short": "感", "initial": 5, "min": 0 },
+    { "key": "con", "label": "体质", "short": "体", "initial": 5, "min": 0 },
+    { "key": "cha", "label": "魅力", "short": "魅", "initial": 5, "min": 0 },
+    { "key": "gold", "label": "金币", "short": "金", "initial": 0, "min": 0 }
+  ]
+}

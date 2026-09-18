@@ -1,0 +1,1373 @@
+{
+  "events": [
+    {
+      "eventId": 1001,
+      "type": "forced",
+      "desc": "你出生了。这一世的大陆上，剑与魔法都还醒着。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "followUp": [
+        { "eventId": 1010, "delay": 0 },
+        { "eventId": 1011, "delay": 0 },
+        { "eventId": 1012, "delay": 0 },
+        { "eventId": 1013, "delay": 0 },
+        { "eventId": 1014, "delay": 0 },
+        { "eventId": 1015, "delay": 0 },
+        { "eventId": 1016, "delay": 0 },
+        { "eventId": 1017, "delay": 0 },
+        { "eventId": 1018, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1010,
+      "desc": "接生婆说你哭声很亮。你是人类，在这个世界上既普通，也什么都可能成为。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 22,
+      "naturalUnlock": false,
+      "effects": { "cha": 1, "int": 1, "wis": 1 },
+      "flags": { "race": "human", "versatile": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1011,
+      "desc": "你的耳朵尖尖的。窗外林风穿过树叶，像是有人在很远的地方唱歌。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 12,
+      "naturalUnlock": false,
+      "effects": { "agi": 3, "wis": 2, "con": -1 },
+      "flags": { "race": "elf", "keen_senses": true, "long_lived": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1012,
+      "desc": "你骨架结实，小拳头攥得很紧。族里人已经在谈论锻炉和矿道。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 12,
+      "naturalUnlock": false,
+      "effects": { "str": 2, "con": 3, "cha": -2 },
+      "flags": { "race": "dwarf", "stout": true, "stone_blood": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1013,
+      "desc": "你比别的婴儿小一圈，却很快学会了笑着伸手。半身人的摇篮总是很软。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "effects": { "agi": 3, "cha": 2, "str": -2 },
+      "flags": { "race": "halfling", "lucky": true, "small_stature": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1014,
+      "desc": "你的眼睛很大，喜欢盯着发光的东西看。侏儒们说这是好奇，不是灾兆。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 8,
+      "naturalUnlock": false,
+      "effects": { "int": 4, "wis": 2, "str": -2, "con": -1 },
+      "flags": { "race": "gnome", "tinkerer": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1015,
+      "desc": "你嗓门大，牙龈里已经隐着獠牙的形状。有人犹豫了一下，还是把你包好了。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 8,
+      "naturalUnlock": false,
+      "effects": { "str": 4, "con": 2, "cha": -3 },
+      "flags": { "race": "half_orc", "savage": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1016,
+      "desc": "你五官里既有人的柔和，也有精灵的清亮。两种血脉在你身上谁也不让谁。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "effects": { "cha": 2, "agi": 2, "wis": 1 },
+      "flags": { "race": "half_elf", "two_worlds": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1017,
+      "desc": "你鳞片还没长全，呼吸里已经带着一丝热气。龙裔的摇篮要离帐幔远一点。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 6,
+      "naturalUnlock": false,
+      "effects": { "str": 3, "cha": 3, "con": 2 },
+      "flags": { "race": "dragonborn", "dragon_breath": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1018,
+      "desc": "你的皮肤带着淡淡异色。有人在门外画了个驱邪的符号，又悄悄擦掉了。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 6,
+      "naturalUnlock": false,
+      "effects": { "int": 2, "cha": 2, "wis": 1, "con": -1 },
+      "flags": { "race": "tiefling", "infernal": true, "stigma": true },
+      "followUp": [
+        { "eventId": 1101, "delay": 0 },
+        { "eventId": 1102, "delay": 0 },
+        { "eventId": 1103, "delay": 0 },
+        { "eventId": 1104, "delay": 0 },
+        { "eventId": 1105, "delay": 0 },
+        { "eventId": 1106, "delay": 0 },
+        { "eventId": 1107, "delay": 0 },
+        { "eventId": 1108, "delay": 0 },
+        { "eventId": 1109, "delay": 0 },
+        { "eventId": 1110, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1101,
+      "desc": "摇篮边挂着圣徽，夜里有人低声念祷文。你出生在牧师家庭。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 8,
+      "naturalUnlock": false,
+      "effects": { "wis": 3, "cha": 1, "gold": 4 },
+      "flags": { "origin": "priest", "faith": true, "liturgy": true },
+      "weightModifiers": [{ "attr": "wis", "base": 5, "multiplier": 4 }],
+      "followUp": [{ "eventId": 1181, "delay": 0 }]
+    },
+    {
+      "eventId": 1102,
+      "desc": "墙上挂着旧盾牌，外面有人在喊操练的口令。你出生在军人家庭。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 8,
+      "naturalUnlock": false,
+      "effects": { "str": 3, "con": 2, "gold": 3 },
+      "flags": { "origin": "soldier", "drill": true },
+      "weightModifiers": [{ "attr": "str", "base": 5, "multiplier": 4 }],
+      "followUp": [{ "eventId": 1182, "delay": 0 }]
+    },
+    {
+      "eventId": 1103,
+      "desc": "房间里全是书和蜡油味。有人把一支小魔杖放到你够不着的架子上。你出生在法师家庭。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 8,
+      "naturalUnlock": false,
+      "effects": { "int": 3, "wis": 1, "con": -1, "gold": 6 },
+      "flags": { "origin": "mage", "arcane_tutelage": true },
+      "weightModifiers": [{ "attr": "int", "base": 5, "multiplier": 4 }],
+      "followUp": [{ "eventId": 1183, "delay": 0 }]
+    },
+    {
+      "eventId": 1104,
+      "desc": "抽屉里有账本和秤砣，门口总有人讨价还价。你出生在商人家庭。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 7,
+      "naturalUnlock": false,
+      "effects": { "cha": 2, "int": 2, "gold": 20 },
+      "flags": { "origin": "merchant", "ledger": true },
+      "weightModifiers": [{ "attr": "cha", "base": 5, "multiplier": 3 }],
+      "followUp": [{ "eventId": 1184, "delay": 0 }]
+    },
+    {
+      "eventId": 1105,
+      "desc": "窗外是田埂和牲口的气味。没有纹章，也没有秘法，只是普通的农人家庭。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 16,
+      "naturalUnlock": false,
+      "effects": { "con": 3, "str": 1, "gold": 5 },
+      "flags": { "origin": "farmer", "soil_sense": true },
+      "followUp": [{ "eventId": 1185, "delay": 0 }]
+    },
+    {
+      "eventId": 1106,
+      "desc": "锤子敲打的声音从早响到晚。你出生在工匠家庭，手上以后大概会有茧。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 7,
+      "naturalUnlock": false,
+      "effects": { "int": 2, "con": 2, "gold": 8 },
+      "flags": { "origin": "artisan", "craft_eye": true },
+      "weightModifiers": [{ "attr": "con", "base": 5, "multiplier": 3 }],
+      "followUp": [{ "eventId": 1186, "delay": 0 }]
+    },
+    {
+      "eventId": 1107,
+      "desc": "没有摇篮，只有巷子里的纸板和别人剩下的面包。你是在街头被捡到的。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 5,
+      "naturalUnlock": false,
+      "effects": { "agi": 3, "wis": 1, "con": -1 },
+      "flags": { "origin": "street", "streetwise": true },
+      "weightModifiers": [{ "attr": "agi", "base": 5, "multiplier": 3 }],
+      "followUp": [{ "eventId": 1187, "delay": 0 }]
+    },
+    {
+      "eventId": 1108,
+      "desc": "丝绸、奶糕和低声的礼节。你出生在贵族院落，奶娘比血亲更常出现。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 4,
+      "naturalUnlock": false,
+      "effects": { "cha": 3, "int": 1, "gold": 30 },
+      "flags": { "origin": "noble", "heraldry": true },
+      "weightModifiers": [{ "attr": "cha", "base": 5, "multiplier": 4 }],
+      "followUp": [{ "eventId": 1188, "delay": 0 }]
+    },
+    {
+      "eventId": 1109,
+      "desc": "帐篷外有兽骨风铃。你出生在氏族部落，火堆比墙壁更像家。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 6,
+      "naturalUnlock": false,
+      "effects": { "str": 2, "wis": 2, "con": 1, "gold": 2 },
+      "flags": { "origin": "tribe", "ancestral_fire": true },
+      "weightModifiers": [
+        { "attr": "str", "base": 5, "multiplier": 3 },
+        { "attr": "con", "base": 5, "multiplier": 2 }
+      ],
+      "followUp": [{ "eventId": 1189, "delay": 0 }]
+    },
+    {
+      "eventId": 1110,
+      "desc": "圣堂的钟声隔着石墙传进来。你在骑士团附属的院落里长大，誓言比玩具先出现。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 4,
+      "naturalUnlock": false,
+      "effects": { "str": 2, "wis": 2, "cha": 1, "gold": 6 },
+      "flags": { "origin": "temple_order", "faith": true, "oath_child": true },
+      "weightModifiers": [
+        { "attr": "wis", "base": 5, "multiplier": 3 },
+        { "attr": "cha", "base": 5, "multiplier": 2 }
+      ],
+      "followUp": [{ "eventId": 1190, "delay": 0 }]
+    },
+    {
+      "eventId": 1181,
+      "desc": "有人把圣水点在你额头上。这一年你还什么都不懂，只记得香火的味道。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "wis": 1 },
+      "flags": { "choir_voice": true }
+    },
+    {
+      "eventId": 1182,
+      "desc": "有人把木剑塞到摇篮边上。这一年你还什么都不懂，只被操练的鼓点吵醒。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "str": 1 },
+      "flags": { "watch_habit": true }
+    },
+    {
+      "eventId": 1183,
+      "desc": "有人怕你抓到墨水瓶。这一年你还什么都不懂，只是爱看烛火跳动。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "int": 1 },
+      "flags": { "cantrip_spark": true }
+    },
+    {
+      "eventId": 1184,
+      "desc": "铜币在桌上响。这一年你还什么都不懂，却会伸手去抓发亮的东西。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "gold": 4 },
+      "flags": { "credit_name": true }
+    },
+    {
+      "eventId": 1185,
+      "desc": "稻草堆比床还香。这一年你还什么都不懂，听着牲口叫就睡着了。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "con": 1 },
+      "flags": { "weather_eye": true }
+    },
+    {
+      "eventId": 1186,
+      "desc": "火星偶尔溅到地上。这一年你还什么都不懂，却不怕打铁的声音。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "con": 1 },
+      "flags": { "maker_mark": true }
+    },
+    {
+      "eventId": 1187,
+      "desc": "雨会漏进来。这一年你还什么都不懂，只知道靠近有体温的人。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "agi": 1 },
+      "flags": { "rooftop_path": true }
+    },
+    {
+      "eventId": 1188,
+      "desc": "有人教你以后要鞠躬。这一年你还什么都不懂，把绸缎咬出了牙印。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "gold": 6 },
+      "flags": { "court_manners": true }
+    },
+    {
+      "eventId": 1189,
+      "desc": "兽皮很暖。这一年你还什么都不懂，火光把帐篷顶映成红色。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "wis": 1 },
+      "flags": { "wild_track": true }
+    },
+    {
+      "eventId": 1190,
+      "desc": "钟声准时响起。这一年你还什么都不懂，却会在跪拜的人群里安静片刻。",
+      "minAge": 0,
+      "maxAge": 0,
+      "baseWeight": 0,
+      "naturalUnlock": false,
+      "effects": { "cha": 1 },
+      "flags": { "squire_token": true }
+    },
+    {
+      "eventId": 1201,
+      "type": "forced",
+      "desc": "你还不会走路，整天被人抱着。世界很大，天花板是你的天空。",
+      "minAge": 1,
+      "maxAge": 1,
+      "baseWeight": 0
+    },
+    {
+      "eventId": 1202,
+      "type": "forced",
+      "desc": "你被大人带着，过着这座城镇或营地里最普通的日子。",
+      "minAge": 3,
+      "maxAge": 4,
+      "baseWeight": 0
+    },
+    {
+      "eventId": 1203,
+      "type": "forced",
+      "desc": "你到了该学规矩的年纪。家里人开始认真对待你的双手和嘴巴。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 0,
+      "followUp": [
+        { "eventId": 1221, "delay": 0 },
+        { "eventId": 1222, "delay": 0 },
+        { "eventId": 1223, "delay": 0 },
+        { "eventId": 1224, "delay": 0 },
+        { "eventId": 1225, "delay": 0 },
+        { "eventId": 1226, "delay": 0 },
+        { "eventId": 1227, "delay": 0 },
+        { "eventId": 1228, "delay": 0 },
+        { "eventId": 1229, "delay": 0 },
+        { "eventId": 1230, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1221,
+      "desc": "你被带去礼拜，学会了低头、沉默，以及不要在香炉旁跑跳。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "priest" }],
+      "effects": { "wis": 2 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1222,
+      "desc": "你被按着站军姿。木剑比你的胳膊还长，你却被要求不许放下。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "soldier" }],
+      "effects": { "str": 2, "con": 1 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1223,
+      "desc": "你开始认字母和法术符号。墨水喝了一口，苦得你直吐。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "mage" }],
+      "effects": { "int": 2 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1224,
+      "desc": "你学着数铜币，并把假币从真币里挑出来。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "merchant" }],
+      "effects": { "cha": 1, "int": 1, "gold": 4 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1225,
+      "desc": "你跟着去田里赶鸟。太阳很大，水罐很快就空了。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "farmer" }],
+      "effects": { "con": 2, "str": 1 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1226,
+      "desc": "你被允许递锤子，但不许靠近炉心。火花在你眼里比星星好看。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "artisan" }],
+      "effects": { "int": 1, "con": 1 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1227,
+      "desc": "你学会了哪条巷子能跑、哪家摊主会心软。这是街头的功课。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "street" }],
+      "effects": { "agi": 2, "wis": 1 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1228,
+      "desc": "家庭教师纠正你的礼节。你把叉子用错了，被罚抄家训。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "noble" }],
+      "effects": { "cha": 2, "int": 1 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1229,
+      "desc": "族里的猎人教你辨认脚印。你第一次亲手给火堆添柴。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "tribe" }],
+      "effects": { "wis": 1, "str": 1, "con": 1 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1230,
+      "desc": "你跟着诵誓词，跪得膝盖发麻。有人说信念要先于剑。",
+      "minAge": 6,
+      "maxAge": 6,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "origin": "temple_order" }],
+      "effects": { "wis": 1, "str": 1, "cha": 1 },
+      "flags": { "in_school": true }
+    },
+    {
+      "eventId": 1240,
+      "type": "forced",
+      "desc": "你的嗓音变了，衣服也短了。少年的轮廓开始从孩子里长出来。",
+      "minAge": 12,
+      "maxAge": 12,
+      "baseWeight": 0
+    },
+    {
+      "eventId": 1301,
+      "desc": "你把圣徽偷出来玩，被罚去擦了一整天烛台。",
+      "minAge": 7,
+      "maxAge": 15,
+      "requiredFlags": [{ "faith": true }],
+      "effects": { "wis": 1 },
+      "cooldownGroups": ["childhood"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1302,
+      "desc": "礼拜结束，你把剩下的面饼分给门口的乞丐。",
+      "minAge": 8,
+      "maxAge": 16,
+      "requiredFlags": [{ "faith": true }],
+      "effects": { "cha": 1, "wis": 1 },
+      "cooldownGroups": ["childhood"],
+      "cooldownMinInterval": 3
+    },
+    {
+      "eventId": 1303,
+      "desc": "你用木剑把草人打散，教官难得说了一句还行。",
+      "minAge": 7,
+      "maxAge": 15,
+      "requiredFlags": [{ "origin": "soldier" }, { "origin": "temple_order" }],
+      "effects": { "str": 1 },
+      "cooldownGroups": ["childhood"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1304,
+      "desc": "你偷看了一页禁书，夜里梦见符号自己在纸上走。",
+      "minAge": 8,
+      "maxAge": 15,
+      "requiredFlags": [{ "origin": "mage" }],
+      "effects": { "int": 1, "wis": -1 }
+    },
+    {
+      "eventId": 1305,
+      "desc": "你把客人的钱包“保管”了一会儿，又默默放了回去。",
+      "minAge": 7,
+      "maxAge": 14,
+      "requiredFlags": [{ "origin": "street" }, { "origin": "merchant" }, { "race": "halfling" }],
+      "effects": { "agi": 1 }
+    },
+    {
+      "eventId": 1306,
+      "desc": "邻家孩子说你的牙可怕，你把他们打跑了，自己也挨了骂。",
+      "minAge": 6,
+      "maxAge": 14,
+      "requiredFlags": [{ "race": "half_orc" }],
+      "effects": { "str": 1, "cha": -1 }
+    },
+    {
+      "eventId": 1307,
+      "desc": "你在林子里迷路，却比大人更早听见溪水。",
+      "minAge": 7,
+      "maxAge": 15,
+      "requiredFlags": [{ "race": "elf" }, { "race": "half_elf" }],
+      "effects": { "wis": 1, "agi": 1 }
+    },
+    {
+      "eventId": 1308,
+      "desc": "你被领去矿道口看了一眼。地下的热气让你很兴奋。",
+      "minAge": 8,
+      "maxAge": 15,
+      "requiredFlags": [{ "race": "dwarf" }],
+      "effects": { "con": 1 }
+    },
+    {
+      "eventId": 1309,
+      "desc": "你把一只坏掉的发条鸟修好了，齿轮咬合的声音让你安心。",
+      "minAge": 7,
+      "maxAge": 15,
+      "requiredFlags": [{ "race": "gnome" }, { "origin": "artisan" }],
+      "effects": { "int": 1 }
+    },
+    {
+      "eventId": 1310,
+      "desc": "有人朝你做驱邪手势。你假装没看见，把尾巴藏进袍摆。",
+      "minAge": 6,
+      "maxAge": 16,
+      "requiredFlags": [{ "race": "tiefling" }],
+      "effects": { "cha": -1, "int": 1 }
+    },
+    {
+      "eventId": 1311,
+      "desc": "你打了个嗝，喷出一小团热气，把桌布燎了个洞。",
+      "minAge": 8,
+      "maxAge": 15,
+      "requiredFlags": [{ "race": "dragonborn" }],
+      "effects": { "str": 1, "cha": 1 }
+    },
+    {
+      "eventId": 1312,
+      "desc": "餐桌上的肉比你的脸还大。你吃完后又要了一块面包。",
+      "minAge": 5,
+      "maxAge": 14,
+      "requiredFlags": [{ "race": "halfling" }],
+      "effects": { "con": 1, "cha": 1 }
+    },
+    {
+      "eventId": 1313,
+      "desc": "你把农活干砸了，却把掉进沟里的羊羔抱了回来。",
+      "minAge": 8,
+      "maxAge": 15,
+      "requiredFlags": [{ "origin": "farmer" }],
+      "effects": { "wis": 1, "str": 1 }
+    },
+    {
+      "eventId": 1314,
+      "desc": "夜里林子里有动静，你比同伴更早听出是鹿而不是狼。",
+      "minAge": 10,
+      "maxAge": 20,
+      "effects": { "wis": 1 },
+      "weightModifiers": [{ "attr": "wis", "base": 5, "multiplier": 2 }]
+    },
+    {
+      "eventId": 1315,
+      "desc": "你把旧剑磨出了刃口，手被划破，却很高兴。",
+      "minAge": 10,
+      "maxAge": 16,
+      "requiredFlags": [{ "origin": "soldier" }, { "origin": "temple_order" }, { "origin": "tribe" }],
+      "effects": { "str": 1 },
+      "flags": { "has_sword": true }
+    },
+    {
+      "eventId": 1600,
+      "type": "forced",
+      "desc": "你成年了。这条路不会有人替你走完，你得给自己一个称呼。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 0,
+      "followUp": [
+        { "eventId": 1610, "delay": 0 },
+        { "eventId": 1611, "delay": 0 },
+        { "eventId": 1612, "delay": 0 },
+        { "eventId": 1613, "delay": 0 },
+        { "eventId": 1614, "delay": 0 },
+        { "eventId": 1615, "delay": 0 },
+        { "eventId": 1616, "delay": 0 },
+        { "eventId": 1617, "delay": 0 },
+        { "eventId": 1618, "delay": 0 },
+        { "eventId": 1619, "delay": 0 },
+        { "eventId": 1620, "delay": 0 },
+        { "eventId": 1621, "delay": 0 }
+      ]
+    },
+    {
+      "eventId": 1610,
+      "desc": "你握住剑柄，决定以武力在世界上换一条活路。你成为了战士。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 12,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "str": 1, "con": 1 },
+      "flags": { "job": "fighter", "has_sword": true },
+      "weightModifiers": [{ "attr": "str", "base": 5, "multiplier": 4 }],
+      "mutexEvents": [1611, 1612, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1611,
+      "desc": "你对着圣徽跪下，愿以剑与信念守护弱者。你成为了圣武士。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 5,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "str": 1, "cha": 1, "wis": 1 },
+      "flags": { "job": "paladin", "has_sword": true, "faith": true },
+      "weightModifiers": [
+        { "attr": "wis", "base": 5, "multiplier": 3 },
+        { "attr": "cha", "base": 5, "multiplier": 3 },
+        { "attr": "str", "base": 5, "multiplier": 1 }
+      ],
+      "mutexEvents": [1610, 1612, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1612,
+      "desc": "你接过圣徽，学会了把祈祷说成力量。你成为了牧师。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 8,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "wis": 2 },
+      "flags": { "job": "cleric", "faith": true },
+      "weightModifiers": [{ "attr": "wis", "base": 5, "multiplier": 5 }],
+      "mutexEvents": [1610, 1611, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1613,
+      "desc": "你把第一本法术书抱在怀里，墨迹还没干。你成为了法师。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 8,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "int": 2 },
+      "flags": { "job": "wizard" },
+      "weightModifiers": [{ "attr": "int", "base": 5, "multiplier": 5 }],
+      "mutexEvents": [1610, 1611, 1612, 1614, 1615, 1616, 1617, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1614,
+      "desc": "你学会了在人群里消失，也学会了在锁孔前微笑。你成为了盗贼。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 10,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "agi": 2 },
+      "flags": { "job": "rogue" },
+      "weightModifiers": [{ "attr": "agi", "base": 5, "multiplier": 4 }],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1615, 1616, 1617, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1615,
+      "desc": "你选择荒野而不是城墙。弓弦比人话好懂。你成为了游侠。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 7,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "agi": 1, "wis": 1 },
+      "flags": { "job": "ranger" },
+      "weightModifiers": [
+        { "attr": "wis", "base": 5, "multiplier": 3 },
+        { "attr": "agi", "base": 5, "multiplier": 2 }
+      ],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1614, 1616, 1617, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1616,
+      "desc": "怒火在你胸口找到了名字。你成为了野蛮人。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 6,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "str": 1, "con": 2 },
+      "flags": { "job": "barbarian" },
+      "weightModifiers": [
+        { "attr": "str", "base": 5, "multiplier": 3 },
+        { "attr": "con", "base": 5, "multiplier": 2 }
+      ],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1614, 1615, 1617, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1617,
+      "desc": "你把故事唱给陌生人听，换来晚饭和一条路。你成为了吟游诗人。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 6,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "cha": 2 },
+      "flags": { "job": "bard" },
+      "weightModifiers": [{ "attr": "cha", "base": 5, "multiplier": 5 }],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1614, 1615, 1616, 1618, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1618,
+      "desc": "法术不听书本，只听你的血。你成为了术士。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 5,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "cha": 2 },
+      "flags": { "job": "sorcerer" },
+      "weightModifiers": [{ "attr": "cha", "base": 5, "multiplier": 4 }],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1614, 1615, 1616, 1617, 1619, 1620, 1621]
+    },
+    {
+      "eventId": 1619,
+      "desc": "你向树林发誓不无故取猎。藤蔓像是听得懂。你成为了德鲁伊。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 5,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "wis": 2 },
+      "flags": { "job": "druid" },
+      "weightModifiers": [{ "attr": "wis", "base": 5, "multiplier": 5 }],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1614, 1615, 1616, 1617, 1618, 1620, 1621]
+    },
+    {
+      "eventId": 1620,
+      "desc": "你收起多余的话，开始打坐和挨打。你成为了武僧。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 5,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "agi": 1, "wis": 1 },
+      "flags": { "job": "monk" },
+      "weightModifiers": [
+        { "attr": "agi", "base": 5, "multiplier": 3 },
+        { "attr": "wis", "base": 5, "multiplier": 2 }
+      ],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1621]
+    },
+    {
+      "eventId": 1621,
+      "desc": "有东西在梦里答应你力量，代价以后再谈。你成为了魔契师。",
+      "minAge": 16,
+      "maxAge": 16,
+      "baseWeight": 4,
+      "naturalUnlock": false,
+      "group": "class",
+      "effects": { "cha": 1, "int": 1 },
+      "flags": { "job": "warlock" },
+      "weightModifiers": [
+        { "attr": "cha", "base": 5, "multiplier": 3 },
+        { "attr": "int", "base": 5, "multiplier": 1 }
+      ],
+      "mutexEvents": [1610, 1611, 1612, 1613, 1614, 1615, 1616, 1617, 1618, 1619, 1620]
+    },
+    {
+      "eventId": 1701,
+      "desc": "你又去了一次礼拜。祷文你已经能跟着默念。",
+      "minAge": 8,
+      "maxAge": 60,
+      "requiredFlags": [{ "faith": true }],
+      "effects": { "wis": 1 },
+      "cooldownGroups": ["church"],
+      "cooldownMinInterval": 3,
+      "cooldownMaxTriggers": 8
+    },
+    {
+      "eventId": 1702,
+      "desc": "教会施粥，你帮忙分发。有人握住你的手不放。",
+      "minAge": 10,
+      "maxAge": 50,
+      "requiredFlags": [{ "faith": true }],
+      "effects": { "cha": 1, "wis": 1 },
+      "cooldownGroups": ["church"],
+      "cooldownMinInterval": 4
+    },
+    {
+      "eventId": 1703,
+      "desc": "神职者派你把信件送到邻镇教堂。路上你把神明的名字念了一路。",
+      "minAge": 14,
+      "maxAge": 40,
+      "requiredFlags": [{ "faith": true }],
+      "effects": { "con": 1, "wis": 1 },
+      "cooldownGroups": ["church"],
+      "cooldownMinInterval": 5
+    },
+    {
+      "eventId": 1704,
+      "desc": "教义会议上有人争吵。你第一次意识到神明的仆人也会互相讨厌。",
+      "minAge": 16,
+      "maxAge": 55,
+      "requiredFlags": [{ "faith": true }],
+      "effects": { "int": 1 },
+      "cooldownGroups": ["church"],
+      "cooldownMinInterval": 6
+    },
+    {
+      "eventId": 1710,
+      "desc": "你主持了一场简单的祈福。病人的热度真的退了一些。",
+      "minAge": 17,
+      "maxAge": 70,
+      "requiredFlags": [{ "job": "cleric" }],
+      "effects": { "wis": 1, "cha": 1 },
+      "cooldownGroups": ["cleric_work"],
+      "cooldownMinInterval": 3
+    },
+    {
+      "eventId": 1711,
+      "desc": "你用圣水洗伤口。血味和香料混在一起，你没有吐。",
+      "minAge": 17,
+      "maxAge": 70,
+      "requiredFlags": [{ "job": "cleric" }, { "job": "paladin" }],
+      "effects": { "wis": 1 },
+      "flags": { "sick": null },
+      "cooldownGroups": ["heal"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1712,
+      "desc": "你感到短暂的注视，像有人从很远的高处看了你一眼。",
+      "minAge": 18,
+      "maxAge": 80,
+      "requiredFlags": [{ "job": "cleric" }, { "job": "paladin" }],
+      "effects": { "wis": 1 },
+      "cooldownGroups": ["divine"],
+      "cooldownMinInterval": 8
+    },
+    {
+      "eventId": 1713,
+      "desc": "你立下更苛刻的誓言：不欺弱小，不求私刑。夜里睡得反而更踏实。",
+      "minAge": 18,
+      "maxAge": 40,
+      "requiredFlags": [{ "job": "paladin" }],
+      "effects": { "cha": 1, "wis": 1 },
+      "maxTriggers": 2
+    },
+    {
+      "eventId": 1714,
+      "desc": "你驱散了一小群尸鬼。圣光亮起时，连你自己都愣了一下。",
+      "minAge": 18,
+      "maxAge": 55,
+      "requiredFlags": [{ "job": "paladin" }],
+      "effects": { "str": 1, "cha": 1 },
+      "cooldownGroups": ["paladin_hunt"],
+      "cooldownMinInterval": 4
+    },
+    {
+      "eventId": 1720,
+      "desc": "你把剑挥到手臂发麻。教官说姿势比力气重要，你半信半疑。",
+      "minAge": 17,
+      "maxAge": 45,
+      "requiredFlags": [{ "job": "fighter" }],
+      "effects": { "str": 1, "agi": 1 },
+      "cooldownGroups": ["fighter_drill"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1721,
+      "desc": "比武大会上你赢了一场，奖金够喝很久。肩膀也青了。",
+      "minAge": 18,
+      "maxAge": 40,
+      "requiredFlags": [{ "job": "fighter" }, { "job": "paladin" }],
+      "effects": { "str": 1, "gold": 4, "con": -1 },
+      "cooldownGroups": ["tourney"],
+      "cooldownMinInterval": 5
+    },
+    {
+      "eventId": 1722,
+      "desc": "你接了一份护送商队的佣兵合同。路上很无聊，结尾有盗匪。",
+      "minAge": 17,
+      "maxAge": 50,
+      "requiredFlags": [{ "job": "fighter" }, { "job": "ranger" }],
+      "effects": { "gold": 5, "con": 1 },
+      "cooldownGroups": ["mercenary"],
+      "cooldownMinInterval": 3
+    },
+    {
+      "eventId": 1723,
+      "desc": "你把盾牌修好，又在盾面上刻了个谁也看不懂的记号。",
+      "minAge": 17,
+      "maxAge": 50,
+      "requiredFlags": [{ "job": "fighter" }],
+      "effects": { "con": 1 }
+    },
+    {
+      "eventId": 1730,
+      "desc": "你抄写卷轴到天亮。手指被墨水染黑，脑子却很清楚。",
+      "minAge": 17,
+      "maxAge": 60,
+      "requiredFlags": [{ "job": "wizard" }],
+      "effects": { "int": 1, "con": -1 },
+      "cooldownGroups": ["study"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1731,
+      "desc": "一个法术在掌心炸开。眉毛少了一截，你决定以后先念对音节。",
+      "minAge": 17,
+      "maxAge": 45,
+      "requiredFlags": [{ "job": "wizard" }, { "job": "sorcerer" }],
+      "effects": { "int": 1, "cha": -1 },
+      "cooldownGroups": ["misfire"],
+      "cooldownMinInterval": 4
+    },
+    {
+      "eventId": 1732,
+      "desc": "你买下稀有的施法材料，钱袋立刻瘪了，书架却更亮。",
+      "minAge": 18,
+      "maxAge": 55,
+      "requiredFlags": [{ "job": "wizard" }],
+      "requiredAttrs": { "gold": { "operator": ">=", "value": 4 } },
+      "effects": { "int": 1, "gold": -4 },
+      "cooldownGroups": ["reagents"],
+      "cooldownMinInterval": 5
+    },
+    {
+      "eventId": 1733,
+      "desc": "一只乌鸦开始跟着你。你不确定它是使魔，还是只是饿。",
+      "minAge": 18,
+      "maxAge": 40,
+      "requiredFlags": [{ "job": "wizard" }, { "job": "warlock" }],
+      "effects": { "wis": 1 },
+      "maxTriggers": 1
+    },
+    {
+      "eventId": 1740,
+      "desc": "你用铁丝打开了一把旧锁。里面只有发霉的信，你还是很得意。",
+      "minAge": 17,
+      "maxAge": 50,
+      "requiredFlags": [{ "job": "rogue" }],
+      "effects": { "agi": 1 },
+      "cooldownGroups": ["lockpick"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1741,
+      "desc": "一次失手的扒窃让你在屋顶上跑了半座城。肺很痛，人还在。",
+      "minAge": 17,
+      "maxAge": 40,
+      "requiredFlags": [{ "job": "rogue" }],
+      "effects": { "agi": 1, "con": -1 },
+      "cooldownGroups": ["heist"],
+      "cooldownMinInterval": 3
+    },
+    {
+      "eventId": 1742,
+      "desc": "黑市老板愿意收你的货。你学会了不问来路，只问成色。",
+      "minAge": 18,
+      "maxAge": 45,
+      "requiredFlags": [{ "job": "rogue" }, { "origin": "merchant" }],
+      "effects": { "gold": 3, "cha": 1 },
+      "cooldownGroups": ["blackmarket"],
+      "cooldownMinInterval": 4
+    },
+    {
+      "eventId": 1750,
+      "desc": "你顺着断枝和粪粒找到了鹿群，又放它们走了。今晚喝汤。",
+      "minAge": 17,
+      "maxAge": 55,
+      "requiredFlags": [{ "job": "ranger" }, { "job": "druid" }],
+      "effects": { "wis": 1 },
+      "cooldownGroups": ["track"],
+      "cooldownMinInterval": 3
+    },
+    {
+      "eventId": 1751,
+      "desc": "一头狼在营地外转了整夜。你没有先射箭，它也没有先扑。",
+      "minAge": 17,
+      "maxAge": 50,
+      "requiredFlags": [{ "job": "ranger" }, { "job": "druid" }],
+      "effects": { "wis": 1, "cha": 1 },
+      "maxTriggers": 3
+    },
+    {
+      "eventId": 1752,
+      "desc": "你把沼泽的路记在脑子里。后来有商队出钱买你带路。",
+      "minAge": 18,
+      "maxAge": 50,
+      "requiredFlags": [{ "job": "ranger" }],
+      "effects": { "gold": 3, "wis": 1 }
+    },
+    {
+      "eventId": 1760,
+      "desc": "怒火上来时你几乎听不见自己。事后你坐在地上，直到手不再抖。",
+      "minAge": 17,
+      "maxAge": 45,
+      "requiredFlags": [{ "job": "barbarian" }],
+      "effects": { "str": 1, "wis": -1 },
+      "cooldownGroups": ["rage"],
+      "cooldownMinInterval": 3
+    },
+    {
+      "eventId": 1761,
+      "desc": "角斗场的沙土进了牙缝。你赢了，观众喊的名字你并不在乎。",
+      "minAge": 18,
+      "maxAge": 40,
+      "requiredFlags": [{ "job": "barbarian" }, { "job": "fighter" }],
+      "effects": { "con": 1, "gold": 3, "cha": 1 },
+      "cooldownGroups": ["arena"],
+      "cooldownMinInterval": 5
+    },
+    {
+      "eventId": 1770,
+      "desc": "酒馆里你唱完一首旧歌，有人哭了，有人请你喝酒。",
+      "minAge": 17,
+      "maxAge": 55,
+      "requiredFlags": [{ "job": "bard" }],
+      "effects": { "cha": 1, "gold": 2 },
+      "cooldownGroups": ["perform"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1771,
+      "desc": "你写了一首关于旅途的歌，自己先唱给火听。",
+      "minAge": 17,
+      "maxAge": 60,
+      "requiredFlags": [{ "job": "bard" }],
+      "effects": { "cha": 1, "wis": 1 }
+    },
+    {
+      "eventId": 1780,
+      "desc": "血脉里的力量突然涌出，窗纸燃了。你学会了在爆发前先深呼吸。",
+      "minAge": 17,
+      "maxAge": 40,
+      "requiredFlags": [{ "job": "sorcerer" }],
+      "effects": { "cha": 1, "con": -1 },
+      "cooldownGroups": ["surge"],
+      "cooldownMinInterval": 4
+    },
+    {
+      "eventId": 1781,
+      "desc": "梦里有低语提醒你契约还没写完。你醒来后把枕头翻了个面。",
+      "minAge": 17,
+      "maxAge": 55,
+      "requiredFlags": [{ "job": "warlock" }],
+      "effects": { "int": 1, "wis": 1 },
+      "cooldownGroups": ["patron"],
+      "cooldownMinInterval": 3
+    },
+    {
+      "eventId": 1782,
+      "desc": "你履行了一次说不清的差事，换来一句“暂时够了”。",
+      "minAge": 18,
+      "maxAge": 50,
+      "requiredFlags": [{ "job": "warlock" }],
+      "effects": { "cha": 1, "gold": 2 }
+    },
+    {
+      "eventId": 1790,
+      "desc": "你打坐到膝盖失去知觉。起身时世界安静了一点。",
+      "minAge": 17,
+      "maxAge": 70,
+      "requiredFlags": [{ "job": "monk" }],
+      "effects": { "wis": 1, "con": 1 },
+      "cooldownGroups": ["meditate"],
+      "cooldownMinInterval": 2
+    },
+    {
+      "eventId": 1791,
+      "desc": "戒律不许你还手。你挨了一掌，把怒气压进丹田。",
+      "minAge": 17,
+      "maxAge": 45,
+      "requiredFlags": [{ "job": "monk" }],
+      "effects": { "wis": 1, "str": -1 },
+      "maxTriggers": 3
+    },
+    {
+      "eventId": 1801,
+      "desc": "你跟着商队走了几天，脚步轻了不少。",
+      "minAge": 17,
+      "maxAge": 50,
+      "effects": { "agi": 1 },
+      "weightModifiers": [{ "attr": "agi", "base": 5, "multiplier": 1 }]
+    },
+    {
+      "eventId": 1802,
+      "desc": "你把路旁的巨石挪开，过路人扔来几枚铜币。",
+      "minAge": 17,
+      "maxAge": 50,
+      "effects": { "str": 1, "gold": 2 },
+      "requiredAttrs": { "str": { "operator": ">=", "value": 6 } }
+    },
+    {
+      "eventId": 1803,
+      "desc": "酒馆里有人请你喝酒，夸你像故事里的人物。",
+      "minAge": 17,
+      "maxAge": 45,
+      "effects": { "cha": 1 },
+      "weightModifiers": [{ "attr": "cha", "base": 5, "multiplier": 2 }]
+    },
+    {
+      "eventId": 1804,
+      "desc": "你把旧剑磨亮，手感顺了很多。",
+      "minAge": 17,
+      "maxAge": 35,
+      "requiredFlags": [{ "has_sword": true }],
+      "effects": { "str": 1, "agi": 1 }
+    },
+    {
+      "eventId": 1805,
+      "desc": "冒险者公会收下你的名字，说三个月后再来看告示。",
+      "minAge": 17,
+      "maxAge": 25,
+      "flags": { "in_guild": true },
+      "flagsDelayed": [{ "delay": 3, "flags": { "guild_settled": true } }],
+      "effects": { "gold": -3 }
+    },
+    {
+      "eventId": 1806,
+      "desc": "你在图书馆抄了一晚魔法阵，头很疼，但抄会了一点。",
+      "minAge": 18,
+      "maxAge": 40,
+      "effects": { "int": 1, "con": -1 }
+    },
+    {
+      "eventId": 1807,
+      "desc": "你从老猎人那里学会了设陷阱。",
+      "minAge": 17,
+      "maxAge": 25,
+      "effects": { "agi": 1, "wis": 1 },
+      "unlockEvents": [1808]
+    },
+    {
+      "eventId": 1808,
+      "desc": "你用新学的陷阱逮住一只兔子，今晚有肉汤。",
+      "minAge": 18,
+      "maxAge": 40,
+      "naturalUnlock": false,
+      "effects": { "con": 1, "gold": 1 }
+    },
+    {
+      "eventId": 1809,
+      "desc": "你从车辙和余灰判断出商队刚走不久，抄近路赶上了他们。",
+      "minAge": 18,
+      "maxAge": 50,
+      "effects": { "wis": 1, "gold": 1 },
+      "requiredAttrs": { "wis": { "operator": ">=", "value": 6 } }
+    },
+    {
+      "eventId": 1810,
+      "desc": "城门卫兵看了你一眼，还是放你出城了。",
+      "minAge": 17,
+      "maxAge": 17
+    },
+    {
+      "eventId": 1901,
+      "desc": "你在雨里赶路，第二天发起了烧。",
+      "minAge": 8,
+      "maxAge": 80,
+      "flags": { "sick": true },
+      "effects": { "con": -1 },
+      "followUp": [
+        { "eventId": 1902, "delay": 0 },
+        { "eventId": 1903, "delay": 0 },
+        { "eventId": 9001, "delay": 0 }
+      ],
+      "cooldownGroups": ["sickness"],
+      "cooldownMinInterval": 6
+    },
+    {
+      "eventId": 1902,
+      "desc": "药剂师塞给你一瓶苦药，烧退了。",
+      "minAge": 8,
+      "maxAge": 90,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "sick": true }],
+      "flags": { "sick": null },
+      "effects": { "gold": -2, "con": 1 },
+      "weightModifiers": [
+        { "attr": "gold", "base": 0, "multiplier": 1, "minFactor": 0.2 }
+      ]
+    },
+    {
+      "eventId": 1903,
+      "desc": "你把热度熬了过去，像从很深的水里浮上来。",
+      "minAge": 8,
+      "maxAge": 90,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "sick": true }],
+      "flags": { "sick": null },
+      "effects": { "con": 1, "wis": 1 },
+      "weightModifiers": [
+        { "attr": "con", "base": 5, "multiplier": 2, "minFactor": 0.2 }
+      ]
+    },
+    {
+      "eventId": 9001,
+      "type": "death",
+      "desc": "高烧没有退下去。你倒在路上，没能再站起来。",
+      "minAge": 8,
+      "maxAge": 120,
+      "naturalUnlock": false,
+      "requiredFlags": [{ "sick": true }],
+      "baseWeight": 5,
+      "weightModifiers": [
+        { "attr": "age", "base": 40, "multiplier": 2 },
+        { "attr": "con", "base": 5, "multiplier": -2, "minFactor": 0.2 }
+      ]
+    },
+    {
+      "eventId": 8001,
+      "type": "fallback",
+      "desc": "这一年没有龙，也没有王冠，日子像路一样往前铺。",
+      "minAge": 2,
+      "maxAge": 90,
+      "baseWeight": 8
+    }
+  ]
+}
