@@ -1,4 +1,4 @@
-import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA } from '../render';
+import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA, contentTop, bindFrame, bindViewFrame } from '../render';
 import { TALENT_PICK_MAX, pickBlockedBy } from '../talent/index';
 
 const FONT_STACK = 'PingFang SC, Hiragino Sans GB, Heiti SC, sans-serif';
@@ -112,11 +112,13 @@ export default class TalentView {
       wx.onWindowResize(this._onResize);
     }
     this._layout();
+    bindViewFrame(this);
     this.render();
   }
 
   stop() {
     this.active = false;
+    bindFrame(null);
     if (typeof wx.offTouchStart === 'function') {
       wx.offTouchStart(this._onTouchStart);
       wx.offTouchMove(this._onTouchMove);
@@ -153,7 +155,7 @@ export default class TalentView {
     const h = this.height;
     const safe = this.safeArea;
     const padX = 24;
-    const padTop = Math.max(20, (safe.top || 0) + 12);
+    const padTop = contentTop();
     const padBottom = Math.max(20, h - (safe.bottom || h) + 16);
     const innerW = w - padX * 2;
     const backH = 40;

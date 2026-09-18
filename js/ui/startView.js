@@ -1,4 +1,4 @@
-import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA } from '../render';
+import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA, contentTop, bindFrame, bindViewFrame } from '../render';
 
 const FONT_STACK = 'PingFang SC, Hiragino Sans GB, Heiti SC, sans-serif';
 const COLORS = {
@@ -69,6 +69,7 @@ export default class StartView {
     }
     this._loadIcon();
     this._layout();
+    bindViewFrame(this);
     this.render();
   }
 
@@ -89,6 +90,7 @@ export default class StartView {
 
   stop() {
     this.active = false;
+    bindFrame(null);
     if (typeof wx.offTouchStart === 'function') {
       wx.offTouchStart(this._onTouchStart);
       wx.offTouchMove(this._onTouchMove);
@@ -125,7 +127,7 @@ export default class StartView {
     const h = this.height;
     const safe = this.safeArea;
     const padX = 40;
-    const padTop = Math.max(36, (safe.top || 0) + 28);
+    const padTop = contentTop();
     const padBottom = Math.max(28, h - (safe.bottom || h) + 20);
     const innerW = Math.min(320, w - padX * 2);
     const btnX = (w - innerW) / 2;

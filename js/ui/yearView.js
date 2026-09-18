@@ -1,4 +1,4 @@
-import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA } from '../render';
+import { ctx, PIXEL_RATIO, SCREEN_WIDTH, SCREEN_HEIGHT, SAFE_AREA, contentTop, bindFrame, bindViewFrame } from '../render';
 
 const AUTO_INTERVAL_MS = 500;
 const FONT_STACK = 'PingFang SC, Hiragino Sans GB, Heiti SC, sans-serif';
@@ -109,6 +109,7 @@ export default class YearView {
     if (typeof wx.onWindowResize === 'function') {
       wx.onWindowResize(this._onResize);
     }
+    bindViewFrame(this);
     if (this.errorText) {
       this._layout();
       this.render();
@@ -119,6 +120,7 @@ export default class YearView {
 
   stop() {
     this.active = false;
+    bindFrame(null);
     this._stopAutoplay(true);
     if (typeof wx.offTouchStart === 'function') {
       wx.offTouchStart(this._onTouchStart);
@@ -157,7 +159,7 @@ export default class YearView {
     const h = this.height;
     const safe = this.safeArea;
     const padX = 28;
-    const padTop = Math.max(24, (safe.top || 0) + 10);
+    const padTop = contentTop();
     const padBottom = Math.max(20, h - (safe.bottom || h) + 14);
     const titleH = 32;
     const subtitleH = 20;

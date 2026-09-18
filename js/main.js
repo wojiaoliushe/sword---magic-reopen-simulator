@@ -1,5 +1,5 @@
 import './render';
-import { ctx } from './render';
+import { ctx, contentTop, bindFrame } from './render';
 import LifeEngine from './life/lifeEngine';
 import ModeDef, { resolveModeEntry } from './life/modeDef';
 import StartView from './ui/startView';
@@ -88,16 +88,20 @@ function loadDefaultPack() {
 }
 
 function drawBootMessage(text) {
-  const info = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync();
-  const pr = info.pixelRatio || 1;
-  ctx.setTransform(pr, 0, 0, pr, 0, 0);
-  ctx.fillStyle = '#171412';
-  ctx.fillRect(0, 0, info.screenWidth, info.screenHeight);
-  ctx.fillStyle = '#eddcb8';
-  ctx.font = '20px PingFang SC, sans-serif';
-  ctx.textAlign = 'left';
-  ctx.textBaseline = 'top';
-  ctx.fillText(text, 28, Math.max(80, (info.safeArea && info.safeArea.top) || 0) + 24);
+  const paint = () => {
+    const info = wx.getWindowInfo ? wx.getWindowInfo() : wx.getSystemInfoSync();
+    const pr = info.pixelRatio || 1;
+    ctx.setTransform(pr, 0, 0, pr, 0, 0);
+    ctx.fillStyle = '#171412';
+    ctx.fillRect(0, 0, info.screenWidth, info.screenHeight);
+    ctx.fillStyle = '#eddcb8';
+    ctx.font = '20px PingFang SC, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'top';
+    ctx.fillText(text, 28, contentTop());
+  };
+  bindFrame(paint);
+  paint();
 }
 
 export default class Main {
